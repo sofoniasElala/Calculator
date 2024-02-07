@@ -4,7 +4,11 @@ let firstNumber = null;
 let secondNumber = null;
 let operator = null;
 
+let buttonBackgroundColor = null;
+
 const buttonsArray = ['AC', '+/-', '%', '÷', '7', '8', '9', 'x', '4', '5', '6', '-', '1', '2', '3', '+', '0', '.', '='];
+const operatorArray = ['÷', 'x', '-', '+', '='];
+
 
 function add(num1, num2){
     return +num1 + +num2;
@@ -45,6 +49,9 @@ function buttonPopulate(){
 
     for(let b = 0; b < 19; b++){
         const button = document.createElement('button');
+        if(operatorArray.includes(buttonsArray[b])){
+           button.style.backgroundColor = 'rgb(6, 94, 28)';
+        }
         button.setAttribute('class', 'button');
         if(buttonsArray[b] === '.'){
         button.setAttribute('id', 'dot');
@@ -55,6 +62,15 @@ function buttonPopulate(){
         button.textContent = buttonsArray[b];
         button.addEventListener('click',()=> {
             getButtonValue(button);
+        })
+
+        button.addEventListener('mouseenter', ()=>{
+            buttonBackgroundColor = button.style.backgroundColor;
+            button.style.backgroundColor = 'rgb(28, 147, 58)';
+        })
+
+        button.addEventListener('mouseleave', ()=>{
+            button.style.backgroundColor = buttonBackgroundColor;
         })
         
         buttons.appendChild(button);

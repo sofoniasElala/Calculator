@@ -1,15 +1,20 @@
+body {
+    margin-top: 50px;
+}
 .container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 400px;
+    width: 300px;
     height: 350px;
-    border-style: dotted;
     margin: auto;
     border-radius: 20px;
     overflow: hidden;
+    border-style: double;
+    box-shadow: rgba(28, 147, 58, 0.6) 0px 0px 0px 3px, rgba(28, 147, 58, 0.5)0px 0px 0px 6px, rgba(28, 147, 58, 0.4) 0px 0px 0px 9px, rgba(28, 147, 58, 0.3) 0px 0px 0px 12px, rgba(28, 147, 58, 0.25) 0px 0px 0px 15px;
 }
+
 
 .buttons{
     display: flex;
@@ -17,8 +22,13 @@
 }
 
 .button {
-    width: 100px;
+    width: 75px;
     height: 50px;
+    font-size: large;
+    border-style: thin;
+    border-width:0.01mm;
+    color: aliceblue;
+    background-color: rgba(119, 159, 15, 0.972);
 }
 
 #display {
