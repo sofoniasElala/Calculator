@@ -27,6 +27,11 @@ function percentage(num){
     return num / 100;
 }
 
+function changeSigns(num){
+    if(num > 0) return 0 - num;
+    return Math.abs(num);
+}
+
 function operate(first, second, operator){
         if(operator === '+') return add(first, second);
         if(operator === '÷') return division(first, second);
@@ -77,9 +82,15 @@ function getButtonValue(button){
             reset();
             setDisplay(0);
        } else if(button.textContent === '+/-'){
-
+             if(firstNumber && !operator){
+                firstNumber = changeSigns(firstNumber);
+                setDisplay(firstNumber);
+             } else if(operator && !secondNumber){
+                secondNumber = changeSigns(firstNumber);
+                setDisplay(secondNumber);
+             }
        } else if(button.textContent === '%'){
-            setDisplay(operate(firstNumber, null,button.textContent));
+            setDisplay(operate(firstNumber, null, button.textContent));
             reset();
        } else if(button.textContent === '.'){
              enableButton(false);
