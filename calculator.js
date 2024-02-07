@@ -19,7 +19,12 @@ function multiply(num1, num2){
 }
 
 function division(num1, num2){
+    if(num2 == 0) return 'Can\'t divide by 0';
     return num1 / num2;
+}
+
+function percentage(num){
+    return num / 100;
 }
 
 function operate(first, second, operator){
@@ -27,6 +32,7 @@ function operate(first, second, operator){
         if(operator === '÷') return division(first, second);
         if(operator === 'x') return multiply(first, second);
         if(operator === '-') return subtraction(first, second);
+        if(operator === '%') return percentage(first);
     
 }
 
@@ -68,7 +74,8 @@ function getButtonValue(button){
        } else if(button.textContent === '+/-'){
 
        } else if(button.textContent === '%'){
-
+            setDisplay(operate(firstNumber, null,button.textContent));
+            reset();
        } else if(button.textContent === '.'){
              enableButton(false);
              if(firstNumber === null){
@@ -85,6 +92,14 @@ function getButtonValue(button){
                 setDisplay(secondNumber);
              }
        } else {
+            if(firstNumber && secondNumber && operator){
+                let result = operate(firstNumber,secondNumber, operator);
+                setDisplay(result);
+                reset();
+                firstNumber = result;
+                operator = button.textContent;
+                
+            }
             operator = button.textContent;
        }
     } else {
