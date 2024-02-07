@@ -5,6 +5,7 @@ let secondNumber = null;
 let operator = null;
 
 let buttonBackgroundColor = null;
+let pressedOperatorColors = [];
 
 const buttonsArray = ['AC', '+/-', '%', '÷', '7', '8', '9', 'x', '4', '5', '6', '-', '1', '2', '3', '+', '0', '.', '='];
 const operatorArray = ['÷', 'x', '-', '+', '='];
@@ -51,6 +52,11 @@ function buttonPopulate(){
         const button = document.createElement('button');
         if(operatorArray.includes(buttonsArray[b])){
            button.style.backgroundColor = 'rgb(6, 94, 28)';
+           button.addEventListener('click',()=>{
+             button.style.backgroundColor = 'rgb(170, 176, 152)';
+             button.style.color = 'rgb(207, 218, 8)';
+             pressedOperatorColors.push(button);
+           })
         }
         button.setAttribute('class', 'button');
         if(buttonsArray[b] === '.'){
@@ -114,13 +120,13 @@ function getButtonValue(button){
                 firstNumber = '0.';
                 setDisplay(firstNumber);
              } else if(firstNumber && !operator){
-                firstNumber += '.';
+                if(numberSizeFits(firstNumber + '.')) firstNumber += '.';
                 setDisplay(firstNumber);
              } else if(secondNumber === null){
                 secondNumber = '0.';
                 setDisplay(secondNumber);
              } else {
-                secondNumber += '.';
+                if(numberSizeFits(secondNumber +'.')) secondNumber += '.';
                 setDisplay(secondNumber);
              }
        } else {
@@ -139,13 +145,13 @@ function getButtonValue(button){
             firstNumber = button.textContent;
             setDisplay(firstNumber);
         } else if(firstNumber && operator === null){
-            firstNumber += button.textContent;
+            if(numberSizeFits(firstNumber + button.textContent)) firstNumber += button.textContent;
             setDisplay(firstNumber)
         } else if(secondNumber === null){
             secondNumber = button.textContent;
             setDisplay(secondNumber)
         } else {
-             secondNumber += button.textContent;
+            if(numberSizeFits(secondNumber + button.textContent)) secondNumber += button.textContent;
              setDisplay(secondNumber);
         }
     }
@@ -155,11 +161,23 @@ function setDisplay(num){
     display.textContent = num;
 }
 
+function numberSizeFits(num){
+    if(num.length <= '0000000000000000'.length) return true;
+    return false;
+}
+
 function reset(){
     firstNumber = null;
     secondNumber = null;
     operator = null;
+    resetOperatorColors(pressedOperatorColors);
     enableButton(true);
+}
+
+function resetOperatorColors(arr){
+    for(let btn of arr){
+        btn.style.color = 'rgb(240, 248, 255)';
+    }
 }
 
 function enableButton(option){
