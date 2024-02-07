@@ -61,12 +61,17 @@ function getButtonValue(button){
     if(isNaN(+button.textContent)){
         enableButton(true);
        if(button.textContent === '='){
+        let result = 0;
         if(firstNumber && secondNumber){
-             setDisplay(operate(firstNumber, secondNumber, operator));
+             result = operate(firstNumber, secondNumber, operator);
+             setDisplay(result);
              reset();
+             firstNumber = result;
         } else if(firstNumber && operator && !secondNumber){
-            setDisplay(operate(firstNumber, firstNumber, operator));
+            result = operate(firstNumber, firstNumber, operator);
+            setDisplay(result);
             reset();
+            firstNumber = result;
         }
        } else if(button.textContent === 'AC'){
             reset();
