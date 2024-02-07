@@ -1,5 +1,10 @@
 .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     width: 400px;
+    height: 350px;
     border-style: dotted;
     margin: auto;
     border-radius: 20px;
@@ -17,7 +22,10 @@
 }
 
 #display {
-    width: 400px;
-    height: 100px;
-
+   align-self: flex-end;
+   text-align: right;
+   width: 375px;
+   margin: auto 10px 0px 15px;
+   font-size:xxx-large;
+   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
 }
