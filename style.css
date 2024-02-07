@@ -1,5 +1,10 @@
 body {
-    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    height: 100vh;
+    border-style: double;
+    margin: 0;
 }
 .container {
     display: flex;
@@ -38,4 +43,11 @@ body {
    margin: auto 15px 0px 15px;
    font-size:xx-large;
    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+}
+
+.footer {
+    text-align: center;
+    font-size: large;
+    margin-bottom: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
