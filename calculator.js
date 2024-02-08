@@ -1,8 +1,11 @@
 const buttons = document.querySelector('.buttons');
-const display = document.querySelector('#display')
+const display = document.querySelector('#display');
+const date = document.querySelector('#date');
 let firstNumber = null;
 let secondNumber = null;
 let operator = null;
+let today = new Date();
+date.textContent = today.getFullYear();
 
 let buttonBackgroundColor = null;
 let pressedOperatorColors = [];
